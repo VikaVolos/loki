@@ -1,207 +1,154 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Anime Calculator</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Anime Calculator</title>
 
-<style>
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-        font-family: "Comic Sans MS", cursive;
-    }
-
-    body{
-        height:100vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        background:
-            linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-            url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?q=80&w=1400&auto=format&fit=crop');
-        background-size:cover;
-        overflow:hidden;
-    }
-
-    .calculator{
-        width:340px;
-        padding:20px;
-        border-radius:25px;
-        backdrop-filter: blur(14px);
-        background: rgba(255,255,255,0.12);
-        border:2px solid rgba(255,255,255,0.2);
-        box-shadow:
-            0 0 30px rgba(255,105,180,0.4),
-            0 0 60px rgba(138,43,226,0.3);
-        animation: glow 3s infinite alternate;
-    }
-
-    @keyframes glow{
-        from{
-            box-shadow:
-                0 0 20px #ff69b4,
-                0 0 40px #8a2be2;
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: "Trebuchet MS", sans-serif;
         }
-        to{
-            box-shadow:
-                0 0 35px #00e5ff,
-                0 0 70px #ff00ff;
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:
+                linear-gradient(rgba(10,10,30,.6), rgba(10,10,30,.7)),
+                url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1400&auto=format&fit=crop');
+
+            background-size:cover;
+            background-position:center;
+            overflow:hidden;
         }
-    }
 
-    .title{
-        text-align:center;
-        color:white;
-        font-size:28px;
-        margin-bottom:15px;
-        text-shadow:0 0 10px hotpink;
-    }
+        .calculator{
+            width:360px;
+            padding:25px;
+            border-radius:28px;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(14px);
+            border:1px solid rgba(255,255,255,0.2);
 
-    #display{
-        width:100%;
-        height:70px;
-        border:none;
-        outline:none;
-        border-radius:15px;
-        margin-bottom:20px;
-        padding:15px;
-        font-size:32px;
-        text-align:right;
-        background: rgba(255,255,255,0.2);
-        color:white;
-        box-shadow: inset 0 0 15px rgba(255,255,255,0.2);
-    }
+            box-shadow:
+                0 0 25px rgba(0,255,255,0.3),
+                0 0 50px rgba(255,0,255,0.2);
+        }
 
-    .buttons{
-        display:grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap:12px;
-    }
+        .title{
+            text-align:center;
+            color:white;
+            font-size:30px;
+            margin-bottom:20px;
+            text-shadow:0 0 12px #ff66ff;
+        }
 
-    button{
-        height:65px;
-        border:none;
-        border-radius:18px;
-        font-size:22px;
-        cursor:pointer;
-        transition:0.2s;
-        color:white;
-        background: rgba(255,255,255,0.12);
-        backdrop-filter: blur(6px);
-        box-shadow:0 0 10px rgba(255,255,255,0.15);
-    }
+        #display{
+            width:100%;
+            height:75px;
+            border:none;
+            outline:none;
+            border-radius:18px;
+            margin-bottom:20px;
+            padding:15px;
+            font-size:34px;
+            text-align:right;
+            color:white;
+            background: rgba(255,255,255,0.12);
+            box-shadow: inset 0 0 15px rgba(255,255,255,0.1);
+        }
 
-    button:hover{
-        transform:scale(1.08);
-        background: rgba(255,255,255,0.25);
-    }
+        .buttons{
+            display:grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap:12px;
+        }
 
-    .operator{
-        background: linear-gradient(45deg, #ff00cc, #3333ff);
-    }
+        button{
+            height:68px;
+            border:none;
+            border-radius:18px;
+            font-size:22px;
+            color:white;
+            cursor:pointer;
+            transition:0.2s;
+            background: rgba(255,255,255,0.12);
+        }
 
-    .equal{
-        background: linear-gradient(45deg, #00f260, #0575e6);
-    }
+        button:hover{
+            transform:scale(1.07);
+            background: rgba(255,255,255,0.22);
+        }
 
-    .clear{
-        background: linear-gradient(45deg, #ff512f, #dd2476);
-    }
+        .operator{
+            background: linear-gradient(45deg, #ff00cc, #7b2ff7);
+        }
 
-    .anime-text{
-        text-align:center;
-        color:#fff;
-        margin-top:15px;
-        font-size:14px;
-        text-shadow:0 0 8px cyan;
-        animation: float 2s infinite ease-in-out;
-    }
+        .equal{
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+        }
 
-    @keyframes float{
-        0%{transform:translateY(0px);}
-        50%{transform:translateY(-5px);}
-        100%{transform:translateY(0px);}
-    }
-</style>
+        .clear{
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+        }
+
+        .footer{
+            margin-top:15px;
+            text-align:center;
+            color:white;
+            font-size:14px;
+            text-shadow:0 0 10px cyan;
+        }
+    </style>
 </head>
 <body>
 
 <div class="calculator">
+
     <div class="title">✨ Anime Calc ✨</div>
 
     <input type="text" id="display" disabled>
 
     <div class="buttons">
-        <button onclick="clearDisplay()" class="clear">C</button>
-        <button onclick="append('/')" class="operator">÷</button>
-        <button onclick="append('*')" class="operator">×</button>
-        <button onclick="append('-')" class="operator">−</button>
 
-        <button onclick="append('7')">7</button>
-        <button onclick="append('8')">8</button>
-        <button onclick="append('9')">9</button>
-        <button onclick="append('+')" class="operator">+</button>
+        <button class="clear" onclick="clearDisplay()">C</button>
+        <button class="operator" onclick="appendValue('/')">÷</button>
+        <button class="operator" onclick="appendValue('*')">×</button>
+        <button class="operator" onclick="deleteLast()">⌫</button>
 
-        <button onclick="append('4')">4</button>
-        <button onclick="append('5')">5</button>
-        <button onclick="append('6')">6</button>
-        <button onclick="calculate()" class="equal">=</button>
+        <button onclick="appendValue('7')">7</button>
+        <button onclick="appendValue('8')">8</button>
+        <button onclick="appendValue('9')">9</button>
+        <button class="operator" onclick="appendValue('-')">−</button>
 
-        <button onclick="append('1')">1</button>
-        <button onclick="append('2')">2</button>
-        <button onclick="append('3')">3</button>
-        <button onclick="append('.')">.</button>
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button class="operator" onclick="appendValue('+')">+</button>
 
-        <button onclick="append('0')" style="grid-column: span 4;">0</button>
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button class="equal" onclick="calculate()">=</button>
+
+        <button onclick="appendValue('0')" style="grid-column: span 2;">0</button>
+        <button onclick="appendValue('.')">.</button>
+        <button onclick="appendValue('%')">%</button>
+
     </div>
 
-    <div class="anime-text">
-        🌸 Kawaii Calculator Desu~ 🌸
+    <div class="footer">
+        🌸 kawaii mode activated 🌸
     </div>
+
 </div>
 
-<script>
-    const display = document.getElementById("display");
-
-    function append(value){
-        display.value += value;
-    }
-
-    function clearDisplay(){
-        display.value = "";
-    }
-
-    function calculate(){
-        try{
-            display.value = eval(display.value);
-        } catch {
-            display.value = "baka error >_<";
-        }
-    }
-
-    // Поддержка клавиатуры
-    document.addEventListener("keydown", (e) => {
-        const allowed = "0123456789+-*/.";
-        
-        if(allowed.includes(e.key)){
-            append(e.key);
-        }
-
-        if(e.key === "Enter"){
-            calculate();
-        }
-
-        if(e.key === "Backspace"){
-            display.value = display.value.slice(0, -1);
-        }
-
-        if(e.key.toLowerCase() === "c"){
-            clearDisplay();
-        }
-    });
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
